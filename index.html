@@ -1,26 +1,293 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>plant-health-ai-scan</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Farming </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+  <header class="bg-green-800 text-white p-4 shadow-md">
+    <h1 class="text-2xl font-bold">Modern Farming </h1>
+    <nav class="mt-2 flex space-x-4">
+      <button onclick="showPage('home')" class="hover:underline">Home</button>
+      <button onclick="showPage('buy')" class="hover:underline">Buy</button>
+      <button onclick="showPage('sell')" class="hover:underline">Sell</button>
+      <button onclick="showPage('friends')" class="hover:underline">Friends</button>
+      <button onclick="showPage('schemes')" class="hover:underline">Schemes</button>
+      <button onclick="showPage('monitor')" class="hover:underline">Monitor</button>
+    </nav>
+  </header>
 
-    <meta property="og:title" content="plant-health-ai-scan" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <main class="p-6">
+    <section id= "home" class="page active">
+      <h2 class="text-xl font-semibold mb-4">🏡 Home Dashboard</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-lg font-bold">🌤️ Weather Updates</h3>
+          <p>Sunny, 28°C, Humidity: 60%</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="text-lg font-bold">📈 Market Prices</h3>
+          <ul class="list-disc list-inside">
+            <li>Wheat: ₹2100/quintal</li>
+            <li>Rice: ₹1800/quintal</li>
+            <li>Maize: ₹1600/quintal</li>
+          </ul>
+        </div>
+        <div class="bg-white p-4 rounded shadow md:col-span-2">
+          <h3 class="text-lg font-bold">📢 Scheme Alerts & News</h3>
+          <ul class="list-disc list-inside">
+            <li>PM-Kisan installment: 15th April</li>
+            <li>Crop Insurance closes: 20th April</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white p-4 rounded shadow mt-6">
+        <h3 class="text-lg font-bold">👤 Profile</h3>
+        <div class="flex items-center space-x-4">
+          <img src="OIP (1).jpg" alt="Profile Photo" class="rounded-full w-24 h-24">
+          <div>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Invite Code:</strong> FARM1234</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold mb-2">⚙️ Settings</h4>
+          <button onclick="toggleDarkMode()" class="bg-gray-800 text-white px-4 py-2 rounded mr-2">🌙 Toggle Dark Mode</button>
+          <button class="bg-green-600 text-white px-4 py-2 rounded">📞 Contact Support</button>
+        </div>
+      </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+   <!-- BUY -->
+    <section id="buy" class="page">
+      <h2 class="text-xl font-semibold mb-4">🛒 Buy Farm Products</h2>
+      <input type="text" placeholder="Search or filter products..." class="w-full p-2 mb-4 border rounded">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+          <img src="OIP (1).jpg" alt="Tomatoes" class="w-full mb-2">
+          <h3 class="text-lg font-bold">Organic Tomatoes</h3>
+          <p>₹20/kg</p>
+          <button onclick="handlePayment(60)" class="bg-green-600 text-white px-4 py-2 mt-2 rounded">Add to Cart</button>
+        </div>
+        <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+          <img src="https://via.placeholder.com/150" alt="Spinach" class="w-full mb-2">
+          <h3 class="text-lg font-bold">Fresh Spinach</h3>
+          <p>₹30/bunch</p>
+          <button onclick="handlePayment(30)" class="bg-green-600 text-white px-4 py-2 mt-2 rounded">Add to Cart</button>
+        </div>
+      </div>
+    </section>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- SELL -->
+    <section id="sell" class="page">
+      <h2 class="text-xl font-semibold mb-4">📤 Post Product for Sale</h2>
+      <form class="bg-white p-4 rounded shadow space-y-4 dark:bg-gray-800">
+        <input type="text" placeholder="Product Name" class="w-full p-2 border rounded">
+        <input type="number" placeholder="Price in ₹" class="w-full p-2 border rounded">
+        <input type="file" class="w-full p-2 border rounded">
+        <textarea placeholder="Description" class="w-full p-2 border rounded"></textarea>
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Upload Product</button>
+      </form>
+    </section>
+
+    <!-- FRIENDS -->
+    <section id="friends" class="page">
+      <h2 class="text-xl font-semibold mb-4">👨‍🌾 Social Features</h2>
+      <div class="bg-white p-4 rounded shadow mb-4 dark:bg-gray-800">
+        <h3 class="text-lg font-bold">🔍 Add / Search Farmers</h3>
+        <form class="space-y-2">
+          <input type="text" placeholder="Search Farmers by Name or ID" class="w-full p-2 border rounded">
+          <button class="bg-green-600 text-white px-4 py-2 rounded">Search</button>
+        </form>
+      </div>
+      <div class="bg-white p-4 rounded shadow mb-4 dark:bg-gray-800">
+        <h3 class="text-lg font-bold">💬 Chat & Messaging</h3>
+        <textarea class="w-full p-2 border rounded" placeholder="Type your message..."></textarea>
+        <button class="bg-green-600 text-white px-4 py-2 rounded">Send</button>
+      </div>
+      <div class="bg-white p-4 rounded shadow mb-4 dark:bg-gray-800">
+        <h3 class="text-lg font-bold">📸 Share Photos & Updates</h3>
+        <input type="file" class="w-full p-2 border rounded">
+        <textarea placeholder="Write a caption..." class="w-full p-2 border rounded"></textarea>
+        <button class="bg-green-600 text-white px-4 py-2 rounded">Post Update</button>
+      </div>
+      <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+        <h3 class="text-lg font-bold">👥 Join Groups & Forums</h3>
+        <select class="w-full p-2 border rounded mb-2">
+          <option>Organic Farming</option>
+          <option>Livestock & Poultry</option>
+          <option>Irrigation Techniques</option>
+          <option>Government Policies</option>
+        </select>
+        <button class="bg-green-600 text-white px-4 py-2 rounded">Join Group</button>
+      </div>
+    </section>
+
+    <!-- SCHEMES -->
+    <section id="schemes" class="page">
+      <h2 class="text-xl font-semibold mb-4">🏛️ Government Schemes</h2>
+      <form class="space-y-4 mb-4">
+        <input type="text" placeholder="Search schemes" class="w-full p-2 border rounded">
+        <select class="w-full p-2 border rounded">
+          <option value="">Filter by Type</option>
+          <option value="subsidy">Subsidy</option>
+          <option value="https://sbi.co.in/web/agri-rural/agriculture-banking/crop-loan" target="_blank" >Loans</option>
+          <option value="training">Training</option>
+          <option value="equipment">Equipment</option>
+        </select>   
+        <button type="submit" border="2px" style="border-radius: 25;" >Apply Filters</button><br>
+      </form>
+      <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+        <h3 class="text-lg font-bold">🌱 PM-Kisan Samman Nidhi</h3>
+        <p>Provides ₹6000/year to eligible farmers.</p>
+        <p><strong>Apply:</strong> <a href="https://pmkisan.gov.in" target="_blank" class="text-blue-600 underline">pmkisan.gov.in</a></p>
+      </div>
+      <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+        <h3 class="text-lg font-bold">💵 PRESONAL LOAN</h3>
+        <p>intrest 7.5%/year .</p>
+        <p><strong>Apply:</strong> <a href="https://sbi.co.in/web/agri-rural/agriculture-banking/crop-loan" target="_blank" class="text-blue-600 underline">sbiloan.gov.in</a></p>
+      </div>
+      <div class="bg-white p-4 rounded shadow dark:bg-gray-800">
+        <h3 class="text-lg font-bold">🌱Government subsidy</h3>
+        <p><strong>Apply:</strong> <a href="https://services.india.gov.in/service/listing?ln=en&cat_id=123" target="_blank" class="text-blue-600 underline">Government subsidy</a></p>
+      </div>
+    </section>
+
+
+
+    <section id="monitor" class="page">
+      <h2 class="text-xl font-semibold mb-4">📡 IoT Plant Monitoring</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-bold mb-2">🌱 Live Sensor Data</h3>
+          <ul class="space-y-1">
+            <li>🌡️ Temperature: <span id="temp">--</span> °C</li>
+            <li>💧 Humidity: <span id="humidity">--</span> %</li>
+            <li>🌾 Soil Moisture: <span id="soil">--</span> %</li>
+            <li>☀️ Light Intensity: <span id="light">--</span> lux</li>
+          </ul>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-bold mb-2">🤖 AI Health Status</h3>
+          <p>Status: <span id="aiStatus" class="font-semibold text-green-600">Analyzing...</span></p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-bold mb-2">⚙️ Device Controls</h3>
+          <div class="space-x-2"><br>
+            <button class="bg-green-600 text-white px-4 py-2 roxunded"><a href="http://172.16.44.252:8080/">AI CHATBOT</a></button><br><br>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded" onclick="alert('Auto Irrigation ON')">💧 Irrigation</button>
+            <button class="bg-yellow-600 text-white px-4 py-2 rounded" onclick="alert('Motor ON')">🌀 Motor</button>
+            <button class="bg-gray-600 text-white px-4 py-2 rounded" onclick="alert('light ON')">💡 Light<  /button>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-bold mb-2">📊 Environmental Tracking</h3>
+          <canvas id="monitorChart" height="150"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    function handlePayment() {
+      var options = {
+        key: "YOUR_RAZORPAY_KEY_ID",
+        amount: 50000,
+        currency: "INR",
+        name: "Smart Farming",
+        description: "Purchase Product",
+        handler: function (response) {
+          alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+        },
+        prefill: {
+          name: "kishore",
+          email: "kisore@example.com",
+          contact: "9876543210"
+        },
+        theme: {
+          color: "#1E4D2B"
+        }
+      };
+      var paymentObject = new Razorpay(options);
+      paymentObject.open();
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('bg-green-50');
+      document.body.classList.toggle('bg-gray-900');
+      document.body.classList.toggle('text-gray-800');
+      document.body.classList.toggle('text-white');
+    }
+
+    const tempEl = document.getElementById('temp');
+    const humidityEl = document.getElementById('humidity');
+    const soilEl = document.getElementById('soil');
+    const lightEl = document.getElementById('light');
+    const aiStatus = document.getElementById('aiStatus');
+
+    let monitorChart = new Chart(document.getElementById('monitorChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: Array(10).fill(''),
+        datasets: [
+          { label: 'Temp °C', data: [], borderColor: 'red', fill: false },
+          { label: 'Humidity %', data: [], borderColor: 'blue', fill: false },
+          { label: 'Soil %', data: [], borderColor: 'green', fill: false }
+        ]
+      },
+      options: {
+        responsive: true,
+        animation: false,
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    function updateMonitor() {
+      const temp = (25 + Math.random() * 5).toFixed(1);
+      const humidity = (60 + Math.random() * 20).toFixed(1);
+      const soil = (40 + Math.random() * 30).toFixed(1);
+      const light = (200 + Math.random() * 500).toFixed(0);
+
+      tempEl.textContent = temp;
+      humidityEl.textContent = humidity;
+      soilEl.textContent = soil;
+      lightEl.textContent = light;
+
+      if (soil < 50) {
+        aiStatus.textContent = "Needs Water 💧";
+        aiStatus.classList.replace('text-green-600', 'text-yellow-500');
+      } else {
+        aiStatus.textContent = "Healthy ✅";
+        aiStatus.classList.replace('text-yellow-500', 'text-green-600');
+      }
+
+      const data = monitorChart.data.datasets;
+      if (data[0].data.length >= 10) {
+        data.forEach(d => d.data.shift());
+      }
+
+      data[0].data.push(temp);
+      data[1].data.push(humidity);
+      data[2].data.push(soil);
+      monitorChart.update();
+    }
+
+    setInterval(updateMonitor, 3000);
+  </script>
+</body>
 </html>
