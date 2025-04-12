@@ -1,0 +1,92 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 120 20% 97%;
+    --foreground: 120 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 15% 10%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 97%;
+
+    --secondary: 80 60% 80%;
+    --secondary-foreground: 120 15% 10%;
+
+    --muted: 120 5% 96%;
+    --muted-foreground: 120 5% 40%;
+
+    --accent: 142 70% 90%;
+    --accent-foreground: 142 76% 36%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 10% 85%;
+    --input: 120 10% 85%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.5rem;
+    
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 120 15% 10%;
+    --foreground: 120 10% 90%;
+
+    --card: 120 15% 15%;
+    --card-foreground: 120 10% 90%;
+
+    --popover: 120 15% 15%;
+    --popover-foreground: 120 10% 90%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 97%;
+
+    --secondary: 80 10% 30%;
+    --secondary-foreground: 120 10% 90%;
+
+    --muted: 120 10% 20%;
+    --muted-foreground: 120 10% 60%;
+
+    --accent: 142 25% 25%;
+    --accent-foreground: 120 10% 90%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 90%;
+
+    --border: 120 10% 25%;
+    --input: 120 10% 25%;
+    --ring: 142 76% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.leaf-pattern {
+  background-color: #f8faf8;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627,25.173 C42.064,21.398 37.478,34.086 37.478,39.44 C37.478,39.189 37.478,38.936 37.51,38.684 C37.151,39.265 36.73,39.823 36.243,40.335 C36.147,40.451 36.021,40.544 35.916,40.647 C35.772,40.795 35.628,40.933 35.474,41.069 C35.315,41.204 35.144,41.322 34.973,41.444 C34.789,41.576 34.603,41.695 34.405,41.818 C34.226,41.927 34.039,42.03 33.845,42.13 C33.64,42.237 33.428,42.33 33.213,42.425 C33.004,42.522 32.791,42.608 32.57,42.692 C32.354,42.777 32.128,42.849 31.903,42.923 C31.682,42.995 31.456,43.065 31.224,43.124 C30.9,43.199 30.562,43.271 30.217,43.324 C30.049,43.349 29.878,43.371 29.707,43.39 C29.458,43.423 29.2,43.447 28.944,43.469 C28.758,43.485 28.576,43.496 28.393,43.507 C28.104,43.526 27.812,43.545 27.514,43.553 C27.397,43.557 27.28,43.56 27.16,43.56 C27.16,38.209 22.577,25.519 10.013,29.292 C-2.55,33.067 -2.601,51.236 10.013,60 L54.627,60 C67.241,51.236 67.19,33.067 54.627,25.173 Z' fill='%23e6f1e6' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
